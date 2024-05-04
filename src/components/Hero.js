@@ -6,28 +6,18 @@ export default function Hero() {
     <main className="bg-[#0E6B66] ">
       <div className="mx-auto   max-w-7xl pb-14  sm:pb-32 pt-[140px]  lg:pt-[170px]">
         <div className="mx-auto gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
-          <div className="pr-6 lg:pr-0 lg:pl-8 pl-6 mx-auto    w-full lg:max-w-2xl lg:shrink-0 xl:max-w-3xl text-center lg:text-left flex flex-col items-center  lg:items-start">
+          <div className="pr-6 lg:pr-0 lg:pl-8 pl-6 mx-auto    w-full lg:max-w-2xl lg:shrink-0 xl:max-w-[600px] text-center lg:text-left flex flex-col items-center  lg:items-start">
             <h1
               style={{ lineHeight: 1.2 }}
               className="text-4xl font-bold text-white sm:text-[54px] font_poppins"
             >
               <span>
-                {" "}
-                Experience the Power of{" "}
-                <span className="text-white">
-                  {" "}
-                  Cleansed, Programmed,{" "}
-                  <span className="text-white">and</span> Energized{" "}
-                </span>{" "}
-                Crystals!{" "}
+              Explore bespoke furniture magic at Teek Woods.
               </span>
             </h1>
 
             <p className="mt-6 text-xl leading-8 text-white ">
-              Step into a world of crystal magic, where each crystal has the
-              potential to purify your aura, empower with positivity, and
-              rejuvenate your spirit, unlocking new paths to transformation,
-              well-being, and achieving your goals.
+            Transform your living space with the timeless elegance of Teek Woods furniture, where craftsmanship meets sophistication to create an ambiance of unparalleled beauty and comfort.
             </p>
             <div className="mt-10 flex items-center gap-x-6 w-[fit-content] ">
               <a

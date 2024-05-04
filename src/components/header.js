@@ -31,14 +31,14 @@ export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="inset-x-0 top-0 z-50 w-full fixed  font_poppins bg-[#0E6B66]">
+    <header className="inset-x-0 top-0 z-50 w-full fixed   bg-[#0E6B66]">
       <nav
         className="mx-auto flex max-w-7xl items-center justify-between px-6 h-[60px] sm:h-[68px] lg:px-8"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5 text-[white] text-lg font-semibold">
-            <span className="sr-only">Your Company</span>
+            <span className="sr-only">Teekwood</span>
             {/* <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" /> */}
             TeakWood
           </a>
@@ -72,7 +72,7 @@ export default function Example() {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="absolute -left-20 top-full z-10 mt-3 w-screen max-w-[250px]  overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5">
+              <Popover.Panel className="absolute -left-20 top-full z-10 mt-3  max-w-[250px]  overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5">
                 <div className="p-4">
                   {products.map((item) => (
                     <div

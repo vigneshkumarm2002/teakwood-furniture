@@ -9,9 +9,9 @@ const Footer = () => {
     <div className="bg-white">
       <div className="mx-auto   max-w-7xl pt-32 lg:px-8 px-6 ">
         <div className="flex flex-col gap-8 divide-y divide-gray-900/10">
-        <div className="grid grid-cols-3">
-          <div className="w-full ">
-            
+        <div className="grid grid-cols-1 min-[900px]:grid-cols-3">
+          <div className=" w-full ">
+            <div className="md:max-w-[300px]">
             <h3 className="text-lg font-semibold text-black">Teek Wood</h3>
             <p className="mt-6 max-w- text-base text-gray-900">
               Explore the shimmering world of crystals in our site. Find your
@@ -80,6 +80,7 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
+          </div>
           </div>
          
           <div className=" flex justify-center ">
