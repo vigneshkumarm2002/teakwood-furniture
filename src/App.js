@@ -16,21 +16,35 @@ import Featured from "./components/featured";
 import Faq from "./components/faq";
 import YT from "./components/yt";
 import Footer from "./components/footer";
+import Banners from "./components/banners";
+import About from "./components/about";
 
 function App() {
   return (
     <Router>
-    <div className="App">
-      <Header />
-      <Hero />
-      <Stats />
-      <Benefits />
-      <Categories />
-      <Featured />
-      <Faq />
-      <YT />
-      <Footer/>
-    </div>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Hero />
+                <Banners />
+                <Stats />
+                <Benefits />
+                <Categories />
+                <Featured />
+                <Faq />
+                <YT />
+              </>
+            }
+          />
+
+<Route path="/about" element={<About/>} />
+        </Routes>
+        <Footer />
+      </div>
     </Router>
   );
 }
