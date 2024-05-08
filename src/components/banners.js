@@ -1,11 +1,29 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { ChevronRightIcon ,ChevronLeftIcon } from '@heroicons/react/24/outline';
+import axios from 'axios';
 
 
 const Banners = () => {
+console.log("env", process.env.REACT_APP_API_PORT);
+
+useEffect(() => {
+  axios.get(`${process.env.REACT_APP_API_PORT}/banner`)
+    .then(res => {
+      console.log("res",res.data);
+    })
+    .catch(error => {
+      console.log(error);
+    })
+    .finally(() => {
+    });
+}, []);
+
+
+
+
   const sliderRef = useRef();
 
   const settings = {

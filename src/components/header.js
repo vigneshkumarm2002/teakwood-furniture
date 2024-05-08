@@ -16,15 +16,15 @@ import {
 } from "@heroicons/react/20/solid";
 
 const products = [
-  { name: "Living", href: "#" },
-  { name: "Bedroom", href: "#" },
-  { name: "Dinning & Kitchen", href: "#" },
-  { name: "Storage", href: "#" },
-  { name: "Study", href: "#" },
-  { name: "Outdoor", href: "#" },
-  { name: "Baby & Kids", href: "#" },
-  { name: "Office", href: "#" },
-  { name: "Decor", href: "#" },
+  { name: "Living", href: "/categories/living" },
+  { name: "Bedroom", href: "/categories/bedroom" },
+  { name: "Dinning & Kitchen", href: "/categories/dinning-kitchen" },
+  { name: "Storage", href: "/categories/storage" },
+  { name: "Study", href: "/categories/study" },
+  { name: "Outdoor", href: "/categories/outdoor" },
+  { name: "Baby & Kids", href: "/categories/baby-kids" },
+  { name: "Office", href: "/categories/office" },
+  { name: "Decor", href: "/categories/decor" },
 ];
 
 function classNames(...classes) {
@@ -108,12 +108,12 @@ export default function Example() {
           <a href="/about" className="text-sm font-medium leading-6 text-white">
             About
           </a>
-          <a
+          {/* <a
             href="/contact"
             className="text-sm font-medium leading-6 text-white"
           >
             Contact
-          </a>
+          </a> */}
         </Popover.Group>
       </nav>
       <Dialog
@@ -148,7 +148,7 @@ export default function Example() {
               <div className="space-y-2 py-6">
                 <a
                   href="/"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 "
                 >
                   Home
                 </a>
@@ -182,16 +182,16 @@ export default function Example() {
                 </Disclosure>
                 <a
                   href="/about"
-                  className="text-sm font-medium leading-6 text-white"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 "
                 >
                   About
                 </a>
-                <a
+                {/* <a
                   href="/contact"
-                  className="text-sm font-medium leading-6 text-white"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 "
                 >
                   Contact
-                </a>
+                </a> */}
               </div>
             </div>
           </div>

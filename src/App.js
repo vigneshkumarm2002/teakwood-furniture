@@ -18,10 +18,11 @@ import YT from "./components/yt";
 import Footer from "./components/footer";
 import Banners from "./components/banners";
 import About from "./components/about";
+import ProductPage from "./components/productPage";
 
 function App() {
   return (
-    <Router>
+    <Router >
       <div className="App">
         <Header />
         <Routes>
@@ -40,8 +41,8 @@ function App() {
               </>
             }
           />
-
-<Route path="/about" element={<About/>} />
+          <Route path="/about" element={<About />} />
+          <Route path="/categories/:id" element={<ProductPage />} />
         </Routes>
         <Footer />
       </div>

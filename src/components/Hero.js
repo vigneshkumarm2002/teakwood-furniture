@@ -1,39 +1,15 @@
 import { useEffect, useState } from "react";
-import Banner1 from "./../assets/images/banner1.jpg";
-import Banner2 from "./../assets/images/banner2.jpg";
-import Banner3 from "./../assets/images/banner3.jpg";
+import Banner1 from "./../assets/images/sofa.png";
+
 
 export default function Hero() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const items = document.querySelectorAll(".hom-slid .item");
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      showNextItem();
-    }, 5000);
-
-    return () => clearInterval(intervalId);
-  }, [currentIndex]); // useEffect will re-run whenever currentIndex changes
-
-  const showNextItem = () => {
-    const currentItem = items[currentIndex];
-    currentItem?.classList.remove("active");
-
-    let nextIndex = currentIndex + 1;
-    if (nextIndex >= items.length) {
-      nextIndex = 0;
-    }
-
-    setCurrentIndex(nextIndex);
-    const nextItem = items[nextIndex];
-    nextItem?.classList.add("active");
-  };
 
   return (
     <main className="bg-[#0E6B66] ">
       <div className="mx-auto   max-w-7xl pb-14  px-6 sm:px-8  sm:pb-32 pt-[140px]  lg:pt-[170px]">
-        <div className="mx-auto relative gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
-          <div className="  w-full  lg:shrink-0 lg:max-w-[47%] text-center lg:text-left flex flex-col items-center  lg:items-start">
+        <div className="mx-auto relative gap-8 lg:gap-12 flex-col lg:flex-row lg:mx-0 flex lg:max-w-none lg:items-center ">
+          <div className="  w-full mx-auto max-w-2xl  lg:shrink-0 lg:max-w-[50%] text-center lg:text-left flex flex-col items-center  lg:items-start">
             <h1
               style={{ lineHeight: 1.2 }}
               className="text-4xl font-bold text-white sm:text-[54px] font_poppins"
@@ -56,31 +32,18 @@ export default function Hero() {
               </a>
             </div>
           </div>
-          <div className="w-[70%] h-[500px] rounded-2xl hom-slid overflow-hidden  absolute -top-5 -right-[240px] bg-red-300 px-6 md:px-16 lg:px-0 mt-14 sm:mt-24 lg:mt-[0px] flex flex-col gap-2 sm:gap-4  justify-center items-center lg:items-start">
-            <img
-              src={Banner1}
-              alt="Slider Image 1"
-              loading="lazy"
-              className="w-full h-full object-cover item active"
-            />
+          <div className="mx-auto max-w-xl lg:w-[50%]">
 
-            <img
-              src={Banner2}
-              alt="Slider Image 2"
-              loading="lazy"
-              className="w-full h-full object-cover item "
-            />
-
-            <img
-              src={Banner3}
-              alt="Slider Image 3"
-              loading="lazy"
-              className="w-full h-full object-cover item "
-            />
+              <img
+                src={Banner1}
+                alt="Slider Image 1"
+                loading="lazy"
+                className="w-full h-full object-cover "
+              />
+    
           </div>
         </div>
       </div>
-  
     </main>
   );
 }

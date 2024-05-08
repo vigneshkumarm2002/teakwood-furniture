@@ -30,7 +30,7 @@ const Stats = () => {
                 />
            </div>
             </div>
-            <div className="z-50 sm:z-30 mx-auto  w-[90%]   flex flex-col gap-4 items-end md:w-[58%] md:gap-8 sm:w-[60%] mt-[-50px] sm:mt-0 sm:ml-[-60px] sm:gap-4 ">
+            <div className="z-40 sm:z-30 mx-auto  w-[90%]   flex flex-col gap-4 items-end md:w-[58%] md:gap-8 sm:w-[60%] mt-[-50px] sm:mt-0 sm:ml-[-60px] sm:gap-4 ">
               <img
                 src={Kitchen}
                 className="w-full h-[220px] sm:h-[200px] md:h-[280px] lg:h-[400px] border-4 sm:border-none border-white rounded-md sm:rounded-lg  object-cover  "

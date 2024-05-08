@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "./card";
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/20/solid'
 import { useAsyncError } from "react-router";
+import ProductPage from "./productPage";
+import ProductDetails from "./productDetails";
 
 const Featured = () => {
   const data = [
@@ -98,15 +100,19 @@ const Featured = () => {
   ];
 
   const [more, setMore]=useState(false)
+  const [open, setOpen] = useState(false)
   const [featuredData, setFeaturedData]=useState(null)
+  const [clickedData, setClickedData]=useState(null)
 
   useEffect(()=>{
       more ?  setFeaturedData(data) : setFeaturedData(data.slice(0,8) )
   },[more])
 
   useEffect(()=>{
-console.log("object",featuredData?.length);
-  },[featuredData])
+console.log("object",clickedData);
+  },[open])
+
+  
 
   return (
     <div className="bg-white">
@@ -116,9 +122,10 @@ console.log("object",featuredData?.length);
         </div>
         <div className="w-full grid grid-cols-1 min-[650px]:grid-cols-2 min-[900px]:grid-cols-3  xl:grid-cols-4 gap-4 ">
           {featuredData?.map((item, index) => {
-            return <ProductCard name={item?.name} price={item?.price} />;
+            return <ProductCard setOpen={setOpen} setClickedData={setClickedData} data={item} />;
           })}
         </div>
+        <ProductDetails product={clickedData} open={open} close={()=>setOpen(false)}/>
         <button onClick={()=>{setMore(!more)}} className=" min-w-[150px] justify-center mt-12 w-max mx-auto text-center rounded-md text-base  px-6 py-2  font-medium text-white shadow-sm gradient flex items-center gap-[2px] cursor-pointer">
           <p >{more ? "See less": "See more" } </p>
             {more ? <ChevronUpIcon className="w-6 h-6 pt-[2px]  " /> : <ChevronDownIcon className="w-6 h-6" /> }

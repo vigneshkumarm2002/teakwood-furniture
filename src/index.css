@@ -38,45 +38,4 @@ code {
 }
 
 
-.hom-slid .item {
-  width:100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transform: scale(1);
-  transition: opacity 1s ease-in-out, transform 10s ease-in-out;
-  animation: kenBurns 10s infinite alternate;
-}
 
-.hom-slid .item.active {
-  opacity: 1;
-  transform: scale(1.2);
-}
-
-
-
-@keyframes kenBurns {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.2);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* .hom-slid::after {
-  content: "";
-  height: 100%;
-  width: 100%;
-  background-image: url("./assets/images/pattern2.png");
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 0;
-} */

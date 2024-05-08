@@ -1,18 +1,21 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router";
 
 const Categories = () => {
   const products = [
-    { name: "Living", href: "#" },
-    { name: "Bedroom", href: "#" },
-    { name: "Dinning & Kitchen", href: "#" },
-    { name: "Storage", href: "#" },
-    { name: "Study", href: "#" },
-    { name: "Outdoor", href: "#" },
-    { name: "Baby & Kids", href: "#" },
-    { name: "Office", href: "#" },
-    { name: "Decor", href: "#" },
+    { name: "Living", href: "/categories/living" },
+    { name: "Bedroom", href: "/categories/bedroom" },
+    { name: "Dinning & Kitchen", href: "/categories/dinning-kitchen" },
+    { name: "Storage", href: "/categories/storage" },
+    { name: "Study", href: "/categories/study" },
+    { name: "Outdoor", href: "/categories/outdoor" },
+    { name: "Baby & Kids", href: "/categories/baby-kids" },
+    { name: "Office", href: "/categories/office" },
+    { name: "Decor", href: "/categories/decor" },
   ];
+
+  const navigate = useNavigate()
   return (
     <div className="bg-white">
       <div className="mx-auto   max-w-7xl py-32 lg:px-8 px-6  ">
@@ -31,7 +34,10 @@ const Categories = () => {
                 key={index}
                 className="relative w-full h-[150px] flex items-center justify-center rounded-lg cursor-pointer bg-black overflow-hidden"
                 whileHover="hover"
-             
+                onClick={()=>{
+                  navigate(item?.href)
+                  window.scrollTo(0, 0);
+                }}
               >
                 <motion.img
                     initial={{ opacity: 0.7,scale:1 }}
