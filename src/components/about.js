@@ -11,8 +11,8 @@ const About = () => {
     <>
     <div className="bg-white">
       <div className="mx-auto max-w-7xl px-6 py-14 sm:py-24 mt-14 lg:px-8 ">
-        <div className="flex items-center gap-12 h-full">
-          <h1 className="text-[17px] w-[50%] ">
+        <div className="flex flex-col md:flex-row items-center gap-12 h-full">
+          <h1 className="text-[17px] w-full md:w-[50%] ">
             {" "}
             <span className="text-2xl block text-[#0E6B66] font-semibold mb-4">
               About Us
@@ -34,7 +34,7 @@ const About = () => {
             <br />
           </h1>
 
-          <div className="w-[50%] flex-0 ">
+          <div className=" w-full md:w-[50%] flex-0 ">
             <img
               src={TeakWoodFactory}
               className="w-full h-full rounded-lg object-cover "
@@ -45,10 +45,10 @@ const About = () => {
 
         <div className="pt-24 flex flex-col gap-8 items-center">
           <h1 className="text-xl block text-[#0E6B66] font-semibold mb-4"> Brands We Deal In </h1>
-          <div className="flex gap-12">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-12 ">
             {brands?.map((item, index) => {
               return (<div className="w-24 h-24 rounded-full border flex items-center justify-center"> 
-                <img src={item} className="full w-full rounded-full" />
+                <img src={item} className="full w-full rounded-full " />
               </div>);
             })}
           </div>
@@ -56,7 +56,7 @@ const About = () => {
       </div>
     </div>
 <Benefits />
-<FAQ />
+<FAQ paddingTop />
     </>
   );
 };

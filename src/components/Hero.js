@@ -18,7 +18,7 @@ export default function Hero() {
             </h1>
 
             <p className="mt-6 text-xl leading-8 text-white ">
-              Transform your living space with the timeless elegance of Teek
+              Transform your living space with the timeless elegance of Teak
               Woods furniture, where craftsmanship meets sophistication to
               create an ambiance of unparalleled beauty and comfort.
             </p>

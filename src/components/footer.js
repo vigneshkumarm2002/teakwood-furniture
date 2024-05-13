@@ -11,8 +11,8 @@ const Footer = () => {
         <div className="flex flex-col gap-8 divide-y divide-gray-900/10">
           <div className="grid grid-cols-1 sm:grid-cols-2 min-[900px]:grid-cols-3 gap-12 sm:gap-8">
             <div className="flex justify-center sm:items-start ">
-              <div className="max-w-[300px]">
-                <h3 className="text-lg font-semibold text-black">Teek Wood</h3>
+              <div className="sm:max-w-[300px]">
+                <h3 className="text-lg font-semibold text-black">Teak Wood Factory</h3>
                 <p className="mt-6 max-w- text-base text-gray-900">
                   Discover the timeless elegance of fine furniture on our site.
                   Find the perfect piece to illuminate your home and elevate
@@ -21,7 +21,11 @@ const Footer = () => {
 
                 <ul role="list" className="mt-8 flex space-x-12">
                   <li>
-                    <a className="text-gray-900 hover:text-gray-600" href="#">
+                    <a
+                      className="text-gray-900 hover:text-gray-600"
+                      href="https://wa.me/918904088131"
+                      target="_blank"
+                    >
                       <span className="sr-only">Whatsapp</span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +38,11 @@ const Footer = () => {
                     </a>
                   </li>
                   <li>
-                    <a className="text-gray-900 hover:text-gray-600" href="#">
+                    <a
+                      href="https://www.facebook.com/teakwoodfactory"
+                      target="_blank"
+                      className="text-gray-900 hover:text-gray-600"
+                    >
                       <span className="sr-only">Facebook</span>
                       <svg
                         className="h-6 w-6"
@@ -51,10 +59,14 @@ const Footer = () => {
                     </a>
                   </li>
                   <li>
-                    <a className="text-gray-900 hover:text-gray-600" href="#">
+                    <a
+                      href="https://www.instagram.com/teakwoodfactory?igsh=MWY5aWc5MnM3MWY1eA=="
+                      target="_blank"
+                      className="text-gray-900 hover:text-gray-600"
+                    >
                       <span className="sr-only">Instagram</span>
                       <svg
-                        className="h-6 w-6"
+                        className="h-7 w-7"
                         aria-hidden="true"
                         fill="currentColor"
                         viewBox="0 0 24 24"
@@ -68,23 +80,29 @@ const Footer = () => {
                     </a>
                   </li>
                   <li>
-                    <a className="text-gray-900 hover:text-gray-600" href="#">
-                      <span className="sr-only">X</span>
-                      <svg
-                        className="h-6 w-6"
-                        aria-hidden="true"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path d="M11.4678 8.77491L17.2961 2H15.915L10.8543 7.88256L6.81232 2H2.15039L8.26263 10.8955L2.15039 18H3.53159L8.87581 11.7878L13.1444 18H17.8063L11.4675 8.77491H11.4678ZM9.57608 10.9738L8.95678 10.0881L4.02925 3.03974H6.15068L10.1273 8.72795L10.7466 9.61374L15.9156 17.0075H13.7942L9.57608 10.9742V10.9738Z" />
-                      </svg>
+                    <a
+                      className="text-gray-900 hover:text-gray-600"
+                      href="https://www.youtube.com/@teakwoodfactory5203/featured"
+                      target="_blank"
+                    >
+                      <span className="sr-only">Youtube</span>
+                      <span class="[&>svg]:h-7 [&>svg]:w-7">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="currentColor"
+                          viewBox="0 0 576 512"
+                          
+                        >
+                          <path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zm-317.5 213.5V175.2l142.7 81.2-142.7 81.2z" />
+                        </svg>
+                      </span>
                     </a>
                   </li>
                 </ul>
               </div>
             </div>
 
-            <div className=" flex justify-center ">
+            <div className=" flex sm:justify-center ">
               <div className="flex flex-col">
                 <h3 className="text-lg font-semibold text-black">
                   Contact Information
@@ -93,18 +111,18 @@ const Footer = () => {
                   <dt>
                     <span className="sr-only">Address</span>
                   </dt>
-                  <dd className="flex text-base text-gray-900">
+                  <dd className="flex text-base text-gray-900 ">
                     <BuildingStorefrontIcon
                       className="h-6 w-6 flex-shrink-0 text-gray-900"
                       aria-hidden="true"
                     />
                     <p className="ml-3 ">
-                      XYZ 1st street, 100ft road 1,
+                      Teak Wood Factory ,Ground Floor,
                       <br />
-                      Erode Bus stand <br />
-                      Erode - 638301
-                      <br />
-                      Tamil Nadu , India
+                      no 2032, 18th A, 9th Cross Road,
+                      <br /> Marenahalli 2nd Phase,
+                      <br /> Jp Nagar, J P Nagar 2nd Stage,
+                      <br /> Bengaluru - 560078, Karnataka, India
                     </p>
                   </dd>
                   <dt>
@@ -115,7 +133,9 @@ const Footer = () => {
                       className="h-6 w-6 flex-shrink-0 text-gray-900"
                       aria-hidden="true"
                     />
-                    <span className="ml-3 font-">+91 92323-14567</span>
+                    <a href="tel:+918046052474" className="ml-3">
+                      +91-8046052474
+                    </a>
                   </dd>
                   <dt>
                     <span className="sr-only">Email</span>
@@ -125,26 +145,27 @@ const Footer = () => {
                       className="h-6 w-6 flex-shrink-0 text-gray-900"
                       aria-hidden="true"
                     />
-                    <span className="ml-3 font-">support@teekwood.com</span>
+                    <span className="ml-3 font-">
+                      <a href="mailto:support@teakwood.com">
+                        support@teakwood.com
+                      </a>
+                    </span>
                   </dd>
                 </dl>
               </div>
             </div>
 
-            <div className="flex justify-center  sm:justify-start min-[900px]:justify-center ">
+            <div className="flex    sm:justify-start min-[900px]:justify-center ">
               <div className="flex flex-col gap-4">
                 <h1 className="text-lg font-semibold text-black">
                   Quick links
                 </h1>
 
-                <a href="#" className="text-base leading-6 text-gray-900">
+                <a href="/" className="text-base leading-6 text-gray-900">
                   Home
                 </a>
-                <a href="#" className="text-base leading-6 text-gray-900">
+                <a href="/about" className="text-base leading-6 text-gray-900">
                   About
-                </a>
-                <a href="#" className="text-base leading-6 text-gray-900">
-                  Contact us
                 </a>
               </div>
             </div>

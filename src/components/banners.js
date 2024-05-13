@@ -1,28 +1,25 @@
-import React, { useEffect, useRef } from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import { ChevronRightIcon ,ChevronLeftIcon } from '@heroicons/react/24/outline';
-import axios from 'axios';
-
+import React, { useEffect, useRef, useState } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/outline";
+import axios from "axios";
 
 const Banners = () => {
-console.log("env", process.env.REACT_APP_API_PORT);
+  const [bannerData, setBannerData] = useState(null);
 
-useEffect(() => {
-  axios.get(`${process.env.REACT_APP_API_PORT}/banner`)
-    .then(res => {
-      console.log("res",res.data);
-    })
-    .catch(error => {
-      console.log(error);
-    })
-    .finally(() => {
-    });
-}, []);
-
-
-
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_PORT}/api/banner/`)
+      .then((res) => {
+        console.log("res", res.data);
+        setBannerData(res.data.banner);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {});
+  }, []);
 
   const sliderRef = useRef();
 
@@ -49,16 +46,23 @@ useEffect(() => {
       <div className="mx-auto max-w-7xl pt-24 lg:px-8 px-6">
         <div className="relative">
           <Slider {...settings} ref={sliderRef}>
-            {/* Your banner slides go here */}
-            <div className="w-full h-[300px] bg-red-300">Banner 1</div>
-            <div className="w-full h-[300px] bg-blue-300">Banner 2</div>
-            <div className="w-full h-[300px] bg-green-300">Banner 3</div>
+            {bannerData?.map((item, index) => (
+              <div className="w-full h-[300px] bg-red-300">
+                <img src={process.env.REACT_APP_API_PORT + item?.image} alt={item?.name} className="w-full" />
+              </div>
+            ))}
           </Slider>
-          <button className="absolute top-1/2 left-4 transform -translate-y-1/2  " onClick={goToPrev}>
-           <ChevronLeftIcon  className="w-6 h-6"/>
+          <button
+            className="absolute top-1/2 left-2 transform -translate-y-1/2 text-[#0E6B66] "
+            onClick={goToPrev}
+          >
+            <ChevronLeftIcon className="w-6 h-6" />
           </button>
-          <button className="absolute top-1/2 right-4 transform -translate-y-1/2   " onClick={goToNext}>
-          <ChevronRightIcon  className="w-6 h-6"/>
+          <button
+            className="absolute top-1/2 right-2 transform -translate-y-1/2 text-[#0E6B66]  "
+            onClick={goToNext}
+          >
+            <ChevronRightIcon className="w-6 h-6" />
           </button>
         </div>
       </div>

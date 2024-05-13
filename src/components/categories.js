@@ -13,6 +13,7 @@ const Categories = () => {
     { name: "Baby & Kids", href: "/categories/baby-kids" },
     { name: "Office", href: "/categories/office" },
     { name: "Decor", href: "/categories/decor" },
+    { name: "Chair", href: "/categories/chair" },
   ];
 
   const navigate = useNavigate()

@@ -19,6 +19,7 @@ import Footer from "./components/footer";
 import Banners from "./components/banners";
 import About from "./components/about";
 import ProductPage from "./components/productPage";
+import Testimonial from "./components/testimonial";
 
 function App() {
   return (
@@ -35,8 +36,10 @@ function App() {
                 <Stats />
                 <Benefits />
                 <Categories />
-                <Featured />
+                <Featured  />
+                <Testimonial/>
                 <Faq />
+          
                 <YT />
               </>
             }

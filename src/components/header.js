@@ -25,13 +25,14 @@ const products = [
   { name: "Baby & Kids", href: "/categories/baby-kids" },
   { name: "Office", href: "/categories/office" },
   { name: "Decor", href: "/categories/decor" },
+  { name: "Chair", href: "/categories/chair" },
 ];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Example() {
+export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -45,9 +46,9 @@ export default function Example() {
             href="#"
             className="-m-1.5 p-1.5 text-[white] text-lg font-semibold"
           >
-            <span className="sr-only">Teakwood</span>
+            <span className="sr-only">Teakwood Factory</span>
             {/* <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" /> */}
-            TeakWood
+            TeakWood Factory
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -126,13 +127,13 @@ export default function Example() {
         <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5 text-gray-900">
-              <span className="sr-only"> TeakWood</span>
+              <span className="sr-only"> TeakWood Factory</span>
               {/* <img
                 className="h-8 w-auto"
                 src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                 alt=""
               /> */}
-              TeakWood
+              TeakWood Factory
             </a>
             <button
               type="button"
@@ -199,8 +200,9 @@ export default function Example() {
       </Dialog>
 
       <a
-        className="text-white bg-[#24CC63] p-2 rounded-full w-10 h-10 fixed z-50 bottom-6 right-8 "
-        href="#"
+        className="text-white bg-[#24CC63] p-2 rounded-full w-10 h-10 fixed z-50 bottom-6 right-6 "
+        href="https://wa.me/918904088131"
+        target="_blank"
       >
         {" "}
         <svg

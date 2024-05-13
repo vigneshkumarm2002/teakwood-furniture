@@ -7,13 +7,12 @@ import React, { useRef } from "react";
 
 const YT = () => {
   const links = [
-    "https://youtube.com/embed/FiNEb5ZrLOU?si=_omOgZs7O5bNDnia",
-    "https://youtube.com/embed/x-2LsMUg-lM?si=Co3YGAjLojLojYuA",
-    "https://youtube.com/embed/QA6Oz5JiLN8?si=VOGJiyJm-VxWhX20",
-    "https://www.youtube.com/embed/t_Y-19h82r0?si=D231LmhbCdS-rAde",
-    "https://youtube.com/embed/XQnk_S0EnAw?si=N_WpM8fudkjkossk",
-    "https://youtube.com/embed/QzBZkJG3kJE?si=Phpqa_WZid3M9o4H",
-    "https://youtube.com/embed/K0bmZgaKK0Y?si=TweDVwu8aemoRsj_",
+    "https://youtube.com/embed/tuTGRncdMlc?si=j4kotXInEoEkFdrq", 
+    "https://youtube.com/embed/IXYLbKpqb7w?si=dOjo_5ZS9q9nzgN-",  
+    "https://youtube.com/embed/-UmjbwYMJYk?si=FzR8XluY0Mo0NIVl",  
+    "https://youtube.com/embed/_7pdDf8Zrlc?si=177OLe98zagryKpX", 
+    "https://youtube.com/embed/n5x9o3OgeSk?si=gUYGqnT6kX0El1zb",
+
   ];
 
   const videoLinks = [
