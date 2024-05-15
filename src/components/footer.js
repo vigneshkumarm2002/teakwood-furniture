@@ -117,12 +117,12 @@ const Footer = () => {
                       aria-hidden="true"
                     />
                     <p className="ml-3 ">
-                      Teak Wood Factory ,Ground Floor,
+                      Teak Wood Factory
                       <br />
-                      no 2032, 18th A, 9th Cross Road,
-                      <br /> Marenahalli 2nd Phase,
-                      <br /> Jp Nagar, J P Nagar 2nd Stage,
-                      <br /> Bengaluru - 560078, Karnataka, India
+                      Akshya Complex, Metro Station, 2,
+                      <br />  Kanakapura Rd, near Metro Pillar no 69, 
+                      <br /> Ilyas Nagar, J P Nagar 2nd Stage,
+                      <br />  Bengaluru, Karnataka 560078, India
                     </p>
                   </dd>
                   <dt>
@@ -172,10 +172,7 @@ const Footer = () => {
           </div>
 
           <p className="py-8 text-center text-xs leading-5 text-gray-900 md:order-1 md:mt-0">
-            &copy; 2024 TeakWood. All rights reserved. Made by{" "}
-            <a href="https://mvigneshkumar-portfolio.web.app/" target="_blank">
-              Vigneshkumar M
-            </a>
+            &copy; 2024 TeakWood. All rights reserved.
           </p>
         </div>
       </div>

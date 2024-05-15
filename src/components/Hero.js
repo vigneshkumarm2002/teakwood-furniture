@@ -14,7 +14,7 @@ export default function Hero() {
               style={{ lineHeight: 1.2 }}
               className="text-4xl font-bold text-white sm:text-[54px] font_poppins"
             >
-              <span>Explore bespoke furniture magic at Teek Woods.</span>
+              <span>Explore bespoke furniture magic at Teak Woods.</span>
             </h1>
 
             <p className="mt-6 text-xl leading-8 text-white ">

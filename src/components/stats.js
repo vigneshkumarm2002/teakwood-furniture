@@ -37,7 +37,7 @@ const Stats = () => {
               />
               <div className="w-full sm:w-[75%] sm:mr-5 flex flex-row justify-between items-end md:mr-10 md:w-[72%] md:gap-2 sm:pb-2">
                 <div className="flex flex-col items-center justify-center lg:mt-6">
-                  <h1 className="text-[#121212] text-[30px] md:text-[32px] lg:text-[45px] font-semibold   ">25+</h1>
+                  <h1 className="text-[#121212] text-[30px] md:text-[32px] lg:text-[45px] font-semibold   ">50+</h1>
                   <p className="text-center font-medium  text-[14px] sm:text-[14px] lg:text-[20px] ">
                     {" "}
                     Years of
@@ -56,7 +56,7 @@ const Stats = () => {
                 </div>
 
                 <div className="flex flex-col items-center justify-center">
-                  <h1 className="text-[#121212] text-[30px] md:text-[32px] lg:text-[45px]  font-semibold ">16K+</h1>
+                  <h1 className="text-[#121212] text-[30px] md:text-[32px] lg:text-[45px]  font-semibold ">25K+</h1>
                   <p className="text-center font-medium  text-[14px] sm:text-[14px] lg:text-[20px] ">
                     Esteemed
                     <br />

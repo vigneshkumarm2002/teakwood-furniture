@@ -48,7 +48,7 @@ export default function Header() {
           >
             <span className="sr-only">Teakwood Factory</span>
             {/* <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" /> */}
-            TeakWood Factory
+            Teak Wood Factory
           </a>
         </div>
         <div className="flex lg:hidden">
