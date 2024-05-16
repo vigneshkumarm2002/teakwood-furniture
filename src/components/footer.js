@@ -12,7 +12,9 @@ const Footer = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 min-[900px]:grid-cols-3 gap-12 sm:gap-8">
             <div className="flex justify-center sm:items-start ">
               <div className="sm:max-w-[300px]">
-                <h3 className="text-lg font-semibold text-black">Teak Wood Factory</h3>
+                <h3 className="text-lg font-semibold text-black">
+                  Teak Wood Factory
+                </h3>
                 <p className="mt-6 max-w- text-base text-gray-900">
                   Discover the timeless elegance of fine furniture on our site.
                   Find the perfect piece to illuminate your home and elevate
@@ -91,7 +93,6 @@ const Footer = () => {
                           xmlns="http://www.w3.org/2000/svg"
                           fill="currentColor"
                           viewBox="0 0 576 512"
-                          
                         >
                           <path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zm-317.5 213.5V175.2l142.7 81.2-142.7 81.2z" />
                         </svg>
@@ -120,9 +121,9 @@ const Footer = () => {
                       Teak Wood Factory
                       <br />
                       Akshya Complex, Metro Station, 2,
-                      <br />  Kanakapura Rd, near Metro Pillar no 69, 
+                      <br /> Kanakapura Rd, near Metro Pillar no 69,
                       <br /> Ilyas Nagar, J P Nagar 2nd Stage,
-                      <br />  Bengaluru, Karnataka 560078, India
+                      <br /> Bengaluru, Karnataka 560078, India
                     </p>
                   </dd>
                   <dt>
@@ -134,7 +135,7 @@ const Footer = () => {
                       aria-hidden="true"
                     />
                     <a href="tel:+918046052474" className="ml-3">
-                      +91-8046052474
+                      +91 8046052474
                     </a>
                   </dd>
                   <dt>

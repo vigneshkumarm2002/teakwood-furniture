@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ProductCard from "./card";
 import ProductDetails from "./productDetails";
+import { useParams } from "react-router";
 
 const ProductPage = () => {
   const data = [
@@ -189,18 +190,39 @@ const ProductPage = () => {
       sizes: ["Small", "Medium", "Large"],
     },
   ];
-  const [open, setOpen] = useState(false)
-  const [clickedData, setClickedData]=useState(null)
+  const [open, setOpen] = useState(false);
+  const [clickedData, setClickedData] = useState(null);
+
+  const { id } = useParams();
+
+  function toCamelCase(category) {
+    category = category.replace(/\b\w/g, function (char) {
+      return char.toUpperCase();
+    });
+    category = category.replace(/-/g, " & ");
+    return category;
+  }
 
   return (
     <div className="bg-white">
-      <div className="mx-auto   max-w-7xl pb-20 pt-40 lg:px-8 px-6 ">
+      <div className="mx-auto   max-w-7xl pb-20 pt-28 lg:px-8 px-6 ">
+        <h1 className="font-semibold text-[24px] pb-8 ">{toCamelCase(id)}</h1>
         <div className="w-full grid grid-cols-1 min-[650px]:grid-cols-2 min-[900px]:grid-cols-3  xl:grid-cols-4 gap-4 ">
           {data?.map((item, index) => {
-            return <ProductCard setOpen={setOpen} setClickedData={setClickedData} data={item} />;
+            return (
+              <ProductCard
+                setOpen={setOpen}
+                setClickedData={setClickedData}
+                data={item}
+              />
+            );
           })}
         </div>{" "}
-        <ProductDetails product={clickedData} open={open} close={()=>setOpen(false)}/>
+        <ProductDetails
+          product={clickedData}
+          open={open}
+          close={() => setOpen(false)}
+        />
       </div>{" "}
     </div>
   );
