@@ -48,7 +48,11 @@ const Banners = () => {
           <Slider {...settings} ref={sliderRef}>
             {bannerData?.map((item, index) => (
               <div className="w-full h-[300px] bg-red-300">
-                <img src={process.env.REACT_APP_API_PORT + item?.image} alt={item?.name} className="w-full" />
+                <img
+                  src={process.env.REACT_APP_API_PORT + item?.image}
+                  alt={item?.name}
+                  className="w-full"
+                />
               </div>
             ))}
           </Slider>
