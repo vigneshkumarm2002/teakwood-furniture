@@ -23,7 +23,7 @@ import Testimonial from "./components/testimonial";
 
 function App() {
   return (
-    <Router >
+    <Router>
       <div className="App">
         <Header />
         <Routes>
@@ -36,10 +36,10 @@ function App() {
                 <Stats />
                 <Benefits />
                 <Categories />
-                <Featured  />
-                <Testimonial/>
+                <Featured />
+                <Testimonial />
                 <Faq />
-          
+
                 <YT />
               </>
             }
