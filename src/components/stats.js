@@ -1,6 +1,6 @@
 import React from "react";
-import Image1 from "./../assets/images/room.jpg";
-import Kitchen from "./../assets/images/kitchen.jpg";
+import Image1 from "./../assets/image1.jpg";
+import Kitchen from "./../assets/image2.jpg";
 import RoundPattern from "./../assets/images/rounds.svg";
 
 const Stats = () => {
@@ -11,7 +11,6 @@ const Stats = () => {
           <img
             src={RoundPattern}
             className="absolute top-[96px] z-10 sm:-top-12 md:-top-14  -right-5 lg:-right-10 md:w-[260px]  sm:w-[200px] w-[150px] "
-      
           />
           <div className=" flex sm:flex-row flex-col ">
             <div className="w-full  flex flex-col justify-between  gap-4  md:gap-4 sm:w-[50%]  sm:gap-3">
@@ -28,7 +27,7 @@ const Stats = () => {
                   src={Image1}
                   className="w-full h-full rounded-md sm:rounded-lg object-cover "
                 />
-           </div>
+              </div>
             </div>
             <div className="z-40 sm:z-30 mx-auto  w-[90%]   flex flex-col gap-4 items-end md:w-[58%] md:gap-8 sm:w-[60%] mt-[-50px] sm:mt-0 sm:ml-[-60px] sm:gap-4 ">
               <img
@@ -37,7 +36,9 @@ const Stats = () => {
               />
               <div className="w-full sm:w-[75%] sm:mr-5 flex flex-row justify-between items-end md:mr-10 md:w-[72%] md:gap-2 sm:pb-2">
                 <div className="flex flex-col items-center justify-center lg:mt-6">
-                  <h1 className="text-[#121212] text-[30px] md:text-[32px] lg:text-[45px] font-semibold   ">50+</h1>
+                  <h1 className="text-[#121212] text-[30px] md:text-[32px] lg:text-[45px] font-semibold   ">
+                    50+
+                  </h1>
                   <p className="text-center font-medium  text-[14px] sm:text-[14px] lg:text-[20px] ">
                     {" "}
                     Years of
@@ -47,7 +48,9 @@ const Stats = () => {
                 </div>
 
                 <div className="flex flex-col items-center justify-center">
-                  <h1 className="text-[#121212] text-[30px] md:text-[32px] lg:text-[45px]  font-semibold   ">100+</h1>
+                  <h1 className="text-[#121212] text-[30px] md:text-[32px] lg:text-[45px]  font-semibold   ">
+                    100+
+                  </h1>
                   <p className="text-center font-medium  text-[14px] sm:text-[14px] lg:text-[20px] ">
                     Experienced
                     <br />
@@ -56,7 +59,9 @@ const Stats = () => {
                 </div>
 
                 <div className="flex flex-col items-center justify-center">
-                  <h1 className="text-[#121212] text-[30px] md:text-[32px] lg:text-[45px]  font-semibold ">25K+</h1>
+                  <h1 className="text-[#121212] text-[30px] md:text-[32px] lg:text-[45px]  font-semibold ">
+                    25K+
+                  </h1>
                   <p className="text-center font-medium  text-[14px] sm:text-[14px] lg:text-[20px] ">
                     Esteemed
                     <br />

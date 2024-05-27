@@ -21,7 +21,7 @@ const ProductCard = ({ data, setOpen, setClickedData }) => {
     <div className="w-full h-full rounded-lg shadow-sm border flex flex-col ">
       <img
         onClick={handleClick}
-        className="w-full h-[150px] sm:h-[220px] object-cover rounded-t cursor-pointer"
+        className="w-full h-[220px] object-cover rounded-t cursor-pointer"
         src="https://plus.unsplash.com/premium_photo-1683140425081-14c44089acd0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fGZ1cm5pdHVyZXN8ZW58MHwwfDB8fHww"
       />
       <div className=" w-full p-4  flex flex-col justify-between gap-6 ">
@@ -31,13 +31,13 @@ const ProductCard = ({ data, setOpen, setClickedData }) => {
         >
           {data?.name}
         </h1>
-        <div className="flex  flex-col gap-4 sm:flex-row justify-between sm:items-center  ">
+        <div className="flex justify-between items-center  ">
           <p className="text-lg font-medium">{data?.price}</p>
-          <div className=" flex items-center justify-center gap-x-6 w-full sm:w-[fit-content] ">
+          <div className=" flex items-center gap-x-6 w-[fit-content] ">
             <a
               onClick={handleBuyNowClick}
               rel="noopener noreferrer"
-              className="text-center w-full  cursor-pointer rounded-md text-base px-3 py-1.5 font-medium text-white shadow-sm bg-[#0E6B66] flex items-center justify-center gap-2"
+              className="text-center cursor-pointer rounded-md text-base px-3 py-1.5 font-medium text-white shadow-sm bg-[#0E6B66] flex items-center gap-2"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

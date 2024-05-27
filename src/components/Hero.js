@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
-import Banner1 from "./../assets/images/sofa.png";
-
+import Banner1 from "./../assets/pngwing3.png";
 
 export default function Hero() {
-
-
   return (
     <main className="bg-[#0E6B66] ">
       <div className="mx-auto   max-w-7xl pb-14  px-6 sm:px-8  sm:pb-32 pt-[140px]  lg:pt-[170px]">
@@ -33,14 +30,12 @@ export default function Hero() {
             </div>
           </div>
           <div className="mx-auto max-w-xl lg:w-[50%]">
-
-              <img
-                src={Banner1}
-                alt="Slider Image 1"
-                loading="lazy"
-                className="w-full h-full object-cover "
-              />
-    
+            <img
+              src={Banner1}
+              alt="Slider Image 1"
+              loading="lazy"
+              className="w-full h-full object-cover "
+            />
           </div>
         </div>
       </div>

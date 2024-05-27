@@ -118,7 +118,7 @@ const Featured = () => {
         <div className="text-2xl text-[#0E6B66] font-semibold text-left pb-8">
           Featured Products
         </div>
-        <div className="w-full grid grid-cols-2 min-[650px]:grid-cols-2 min-[900px]:grid-cols-3  xl:grid-cols-4 gap-4 ">
+        <div className="w-full grid grid-cols-1 min-[650px]:grid-cols-2 min-[900px]:grid-cols-3  xl:grid-cols-4 gap-4 ">
           {featuredData?.map((item, index) => {
             return (
               <ProductCard
