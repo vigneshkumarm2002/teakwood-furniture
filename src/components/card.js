@@ -11,7 +11,7 @@ const ProductCard = ({ data, setOpen, setClickedData }) => {
 
     const encodedMessage = encodeURIComponent(message);
 
-    const phoneNumber = "9865446061";
+    const phoneNumber = "8046052474";
 
     const whatsappUrl = `whatsapp://send?phone=${phoneNumber}&text=${encodedMessage}`;
 

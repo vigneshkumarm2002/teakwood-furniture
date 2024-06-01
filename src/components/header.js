@@ -14,6 +14,7 @@ import {
   PhoneIcon,
   PlayCircleIcon,
 } from "@heroicons/react/20/solid";
+import Logo from "./../assets/teakwoodLogo.jpg";
 
 const products = [
   { name: "Living", href: "/categories/living" },
@@ -47,8 +48,8 @@ export default function Header() {
             className="-m-1.5 p-1.5 text-[white] text-lg font-semibold"
           >
             <span className="sr-only">Teakwood Factory</span>
-            {/* <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" /> */}
-            Teak Wood Factory
+            <img className="h-5 sm:h-8 w-auto" src={Logo} alt="Logo" />
+            {/* Teak Wood Factory */}
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -124,16 +125,12 @@ export default function Header() {
         onClose={setMobileMenuOpen}
       >
         <div className="fixed inset-0 z-50" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-5 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5 text-gray-900">
               <span className="sr-only"> TeakWood Factory</span>
-              {/* <img
-                className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                alt=""
-              /> */}
-              TeakWood Factory
+              <img className="h-5 w-auto" src={Logo} alt="" />
+              {/* TeakWood Factory */}
             </a>
             <button
               type="button"

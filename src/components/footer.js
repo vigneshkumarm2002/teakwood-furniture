@@ -18,7 +18,7 @@ const Footer = () => {
         ></iframe>
         <div className="flex flex-col gap-8 divide-y divide-gray-900/10 pt-24">
           <div className="grid grid-cols-1 sm:grid-cols-2 min-[900px]:grid-cols-3 gap-12 sm:gap-8">
-            <div className="flex justify-center sm:items-start ">
+            <div className="flex justify-center sm:justify-normal sm:items-start ">
               <div className="sm:max-w-[300px]">
                 <h3 className="text-lg font-semibold text-black">
                   Teak Wood Factory
