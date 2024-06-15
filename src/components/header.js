@@ -14,7 +14,7 @@ import {
   PhoneIcon,
   PlayCircleIcon,
 } from "@heroicons/react/20/solid";
-import Logo from "./../assets/teakwoodLogo.jpg";
+import Logo from "./../assets/png.png";
 
 const products = [
   { name: "Living", href: "/categories/living" },
