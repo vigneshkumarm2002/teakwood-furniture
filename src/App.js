@@ -39,8 +39,8 @@ function App() {
                 <Featured />
                 <Testimonial />
                 <Faq />
-
-                <YT />
+                {/* 
+                <YT /> */}
               </>
             }
           />

@@ -4,6 +4,7 @@ import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/20/solid";
 import { useAsyncError } from "react-router";
 import ProductPage from "./productPage";
 import ProductDetails from "./productDetails";
+import axios from "axios";
 
 const Featured = () => {
   const data = [
@@ -98,6 +99,26 @@ const Featured = () => {
       sizes: ["Small", "Medium", "Large"],
     },
   ];
+
+  const [loading, setLoading] = useState(false);
+
+  const fetchProduct = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_PORT}/api/product/`
+      );
+      console.log("Response data:", response.data);
+    } catch (error) {
+      console.error("Error fetching product:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchProduct();
+  }, []);
 
   const [more, setMore] = useState(false);
   const [open, setOpen] = useState(false);
