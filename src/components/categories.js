@@ -4,19 +4,6 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 
 const Categories = () => {
-  const products = [
-    { name: "Living", href: "/categories/living" },
-    { name: "Bedroom", href: "/categories/bedroom" },
-    { name: "Dinning & Kitchen", href: "/categories/dinning-kitchen" },
-    { name: "Storage", href: "/categories/storage" },
-    { name: "Study", href: "/categories/study" },
-    { name: "Outdoor", href: "/categories/outdoor" },
-    { name: "Baby & Kids", href: "/categories/baby-kids" },
-    { name: "Office", href: "/categories/office" },
-    { name: "Decor", href: "/categories/decor" },
-    { name: "Chair", href: "/categories/chair" },
-  ];
-
   const [categoryData, setCategoryData] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -70,7 +57,7 @@ const Categories = () => {
                   className="relative w-full h-[150px] flex items-center justify-center rounded-lg cursor-pointer bg-black overflow-hidden"
                   whileHover="hover"
                   onClick={() => {
-                    navigate(`/categories/${item?.name}`);
+                    navigate(`/categories/${item?.uuid}`);
                     window.scrollTo(0, 0);
                   }}
                 >

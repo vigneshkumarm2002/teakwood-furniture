@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Dialog, Disclosure, Popover, Transition } from "@headlessui/react";
 import {
   ArrowPathIcon,
@@ -15,19 +15,11 @@ import {
   PlayCircleIcon,
 } from "@heroicons/react/20/solid";
 import Logo from "./../assets/png.png";
+import axios from "axios";
 
-const products = [
-  { name: "Living", href: "/categories/living" },
-  { name: "Bedroom", href: "/categories/bedroom" },
-  { name: "Dinning & Kitchen", href: "/categories/dinning-kitchen" },
-  { name: "Storage", href: "/categories/storage" },
-  { name: "Study", href: "/categories/study" },
-  { name: "Outdoor", href: "/categories/outdoor" },
-  { name: "Baby & Kids", href: "/categories/baby-kids" },
-  { name: "Office", href: "/categories/office" },
-  { name: "Decor", href: "/categories/decor" },
-  { name: "Chair", href: "/categories/chair" },
-];
+
+
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -35,6 +27,22 @@ function classNames(...classes) {
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const [categoryData, setCategoryData] = useState(null);
+
+useEffect(() => {
+ 
+  axios
+    .get(`${process.env.REACT_APP_API_PORT}/api/category/`)
+    .then((res) => {
+      console.log("res", res.data);
+      setCategoryData(res?.data?.category);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+   
+}, []);
 
   return (
     <header className="inset-x-0 top-0 z-50 w-full fixed   bg-[#0E6B66]">
@@ -84,16 +92,16 @@ export default function Header() {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="absolute -left-20 top-full  mt-3  max-w-[400px]  overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5">
+              <Popover.Panel className="absolute left-1/2 -translate-x-1/2 top-full  mt-3  max-w-[400px] min-w-[150px]  overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5">
                 <div className="p-4">
-                  {products.map((item) => (
+                  {categoryData?.map((item) => (
                     <div
                       key={item.name}
                       className="group relative  whitespace-nowrap flex items-center gap-x-6 rounded-lg px-2 py-2 text-sm leading-6 hover:bg-gray-100"
                     >
                       <div className="flex-auto">
                         <a
-                          href={item.href}
+                           href={`/categories/${item?.uuid}`}
                           className="block font-medium text-gray-900"
                         >
                           {item.name}
@@ -164,11 +172,11 @@ export default function Header() {
                         />
                       </Disclosure.Button>
                       <Disclosure.Panel className="mt-2 space-y-2">
-                        {products.map((item) => (
+                        {categoryData?.map.map((item) => (
                           <Disclosure.Button
                             key={item.name}
                             as="a"
-                            href={item.href}
+                            href={`/categories/${item?.uuid}`}
                             className="block rounded-lg py-2 pl-6 pr-3 text-sm font-medium leading-7 text-gray-900 hover:bg-gray-50"
                           >
                             {item.name}

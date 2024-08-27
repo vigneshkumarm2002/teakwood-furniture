@@ -34,7 +34,7 @@ const Benefits = () => {
       
       {benefits?.map((item,index)=>{
         return (
-            <div className="bg-white rounded-lg p-6 shadow-md ">
+            <div  key={index}  className="bg-white rounded-lg p-6 shadow-md ">
       
             <div className='w-10 h-10 rounded-full p-2 gradient text-white'>
             <item.icon className='w-full h-full rounded-full'/>

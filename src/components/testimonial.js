@@ -65,7 +65,7 @@ const Testimonials = () => {
         
           <Slider {...settings} ref={sliderRef}>
             {testimonialData?.map((item, index) => (
-              <div className=" relative w-full   h-content flex self-center">
+              <div key={index} className=" relative w-full   h-content flex self-center">
                 <div className="max-w-4xl mx-auto  flex flex-col gap-4 items-center justify-center">
                   <p className="text-center text-lg">{item?.review}</p>
 

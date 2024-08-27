@@ -20,6 +20,7 @@ import Banners from "./components/banners";
 import About from "./components/about";
 import ProductPage from "./components/productPage";
 import Testimonial from "./components/testimonial";
+import ProductDetails from "./components/productDetails";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
           />
           <Route path="/about" element={<About />} />
           <Route path="/categories/:id" element={<ProductPage />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
         </Routes>
         <Footer />
       </div>
