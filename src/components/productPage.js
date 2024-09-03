@@ -17,7 +17,8 @@ const ProductPage = () => {
 
   const fetchProducts = async () => {
     const dataToSend = {
-      sub_category: ["741036cb-4e9a-490e-a7e6-54e46bab5fa5"],
+    category : selectedSubcategories.length > 0 ? null : [id],
+      sub_category: selectedSubcategories.length > 0 ? selectedSubcategories : null,
     };
     setLoading(true);
     try {
