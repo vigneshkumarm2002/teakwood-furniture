@@ -172,7 +172,7 @@ useEffect(() => {
                         />
                       </Disclosure.Button>
                       <Disclosure.Panel className="mt-2 space-y-2">
-                        {categoryData?.map.map((item) => (
+                        {categoryData?.map((item) => (
                           <Disclosure.Button
                             key={item.name}
                             as="a"
