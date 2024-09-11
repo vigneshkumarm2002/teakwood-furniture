@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { Dialog, Disclosure, Popover, Transition } from "@headlessui/react";
+import ChairIllus from "./../assets/images/chairillus.jpg"
 import {
   ArrowPathIcon,
   Bars3Icon,
@@ -16,9 +17,6 @@ import {
 } from "@heroicons/react/20/solid";
 import Logo from "./../assets/png.png";
 import axios from "axios";
-
-
-
 
 
 function classNames(...classes) {
@@ -43,6 +41,10 @@ useEffect(() => {
     })
    
 }, []);
+
+useEffect(()=>{
+  console.log("process.env.REACT_APP_API_PORT", process.env.REACT_APP_API_PORT)
+},[process.env.REACT_APP_API_PORT])
 
   return (
     <header className="inset-x-0 top-0 z-50 w-full fixed   bg-[#0E6B66]">
@@ -133,7 +135,7 @@ useEffect(() => {
         onClose={setMobileMenuOpen}
       >
         <div className="fixed inset-0 z-50" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-5 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full  bg-white px-6 py-5 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5 text-gray-900">
               <span className="sr-only"> TeakWood Factory</span>
@@ -149,7 +151,8 @@ useEffect(() => {
               <XMarkIcon className="h-6 w-6" aria-hidden="true" />
             </button>
           </div>
-          <div className="mt-6 flow-root">
+          <div className="mt-6 relative flow-root h-full overflow-y-auto">
+            <img src={ChairIllus} alt="Illus"  className="absolute  h-[300px] bottom-0 right-0"/>
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
                 <a

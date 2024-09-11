@@ -1,35 +1,13 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 import RupeeSign from "./../assets/icons/rupee.png";
 
-const ProductDetail = ({}) => {
+const ProductDetail = () => {
   const [product, setProduct] = useState(null);
-
-  const [selectedColor, setSelectedColor] = useState(
-    product?.color?.[0] ?? product?.color
-  );
-
-  const handleColorSelect = (color) => {
-    setSelectedColor(color);
-  };
-
-  const handleBuyNowClick = () => {
-
-    const message = `I'm interested in purchasing the following product:\n\nProduct Name: ${product?.name}\nPrice: ${product?.price}`;
-  
-    const encodedMessage = encodeURIComponent(message);
-  
-    const phoneNumber = "918904088131";
-
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
-
-    window.open(whatsappUrl, "_blank");
-  };
-  
-
+  const [selectedImage, setSelectedImage] = useState(0);
+  const [selectedColor, setSelectedColor] = useState("");
   const { id } = useParams();
-
   const [loading, setLoading] = useState(false);
 
   const fetchProduct = async () => {
@@ -38,11 +16,9 @@ const ProductDetail = ({}) => {
       const response = await axios.get(
         `${process.env.REACT_APP_API_PORT}/api/product/${id}/`
       );
-
-      console.log(response?.data?.product);
-      setProduct(response?.data?.product);
+      setProduct(response.data.product);
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching product:", error);
     } finally {
       setLoading(false);
     }
@@ -51,67 +27,139 @@ const ProductDetail = ({}) => {
   useEffect(() => {
     fetchProduct();
     window.scrollTo(0, 0);
-  }, []);
+  }, [id]);
+
+  // Handle buy now click and include the selected color
+  const handleBuyNowClick = () => {
+    const message = `I'm interested in purchasing the following product:\n\nProduct Name: ${product?.name}\nPrice: ${product?.price}\nSelected Color: ${selectedColor || 'No color selected'}`;
+    const encodedMessage = encodeURIComponent(message);
+    const phoneNumber = "918904088131";
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
+    window.open(whatsappUrl, "_blank");
+  };
+
+  const handleColorSelect = (color) => {
+    setSelectedColor(color);
+  };
+
+  const productImages = [
+    product?.image_one,
+    product?.image_two,
+    product?.image_three,
+    product?.image_four,
+    product?.image_five,
+  ].filter(Boolean);
+
+  if (loading) return <div>Loading...</div>;
+  if (!product) return <div>Product not found</div>;
 
   return (
     <div className="bg-white">
-      <div className="mx-auto   max-w-7xl pt-28 lg:px-8 px-6  ">
-      <div className="text-2xl  text-[#0E6B66] font-semibold  mb-6 ">
-         Product Details
+      <div className="mx-auto max-w-7xl pt-20 md:pt-28 lg:px-8 px-6">
+        <div className="text-2xl text-[#0E6B66] font-semibold mb-6">
+          Product Details
         </div>
         <div className="w-full flex flex-col md:flex-row gap-8 md:gap-12">
-          <div className="md:w-[40%] h-[250px] sm:h-[350px] rounded-lg bg-[#CCCCCC]">
-            <img
-              src={
-                product?.image_one
-                  ? process.env.REACT_APP_API_PORT + product?.image_one
-                  : "https://plus.unsplash.com/premium_photo-1683140425081-14c44089acd0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fGZ1cm5pdHVyZXN8ZW58MHwwfDB8fHww"
-              }
-              alt={product?.name}
-              className="w-full h-full p-4 object-contain"
-            />
+        <h1 className="text-base md:hidden block sm:text-xl capitalize font-semibold ">
+              {product.name}
+            </h1>
+          <div className="md:w-[40%]">
+            <div className="h-[250px] sm:h-[350px] rounded-lg bg-[#CCCCCC] mb-4">
+              <img
+                src={
+                  productImages[selectedImage]
+                    ? `${process.env.REACT_APP_API_PORT}${productImages[selectedImage]}`
+                    : "https://plus.unsplash.com/premium_photo-1683140425081-14c44089acd0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fGZ1cm5pdHVyZXN8ZW58MHwwfDB8fHww"
+                }
+                alt={product.name}
+                className="w-full h-full p-4 object-contain"
+              />
+            </div>
+            <div className="flex justify-center gap-2">
+              {productImages.map((img, index) => (
+                <img
+                  key={index}
+                  src={`${process.env.REACT_APP_API_PORT}${img}`}
+                  alt={`Product ${index + 1}`}
+                  className={`w-16 h-16 object-cover cursor-pointer ${
+                    selectedImage === index ? "border-2 border-blue-500" : ""
+                  }`}
+                  onClick={() => setSelectedImage(index)}
+                />
+              ))}
+            </div>
           </div>
 
-          <div className="md:w-[60%] h-auto w-full ">
-            <h1 className="text-base sm:text-xl capitalize font-semibold mb-2">
-              {product?.name}
+          <div className="md:w-[60%] h-auto w-full">
+            <h1 className="text-base md:block hidden sm:text-xl capitalize font-semibold mb-2">
+              {product.name}
             </h1>
-            <p className="text-gray-600 text-sm sm:text-base">
-              {product?.description}
+            <p className="text-gray-600 text-sm sm:text-base mb-4">
+              {product.description}
             </p>
-            <p className="text-lg font-semibold flex items-center mt-4">
-              <img src={RupeeSign} className="h-5 w-auto" />
-              {product?.price}
+            <p className="text-lg font-semibold flex items-center mb-4">
+              <img src={RupeeSign} alt="Rupee" className="h-5 w-auto mr-1" />
+              {product.price}
             </p>
-            <div className="flex items-center mt-4">
-              <p>Color:</p>
-              <div className="flex ml-2 space-x-2">
-                {Array.isArray(product?.color) ? (
-                  product?.color.map((color, index) => (
+            <div className="grid grid-cols-2 gap-4 mb-4">
+              <div>
+                <p className="font-semibold">Category:</p>
+                <p>{product.category.name}</p>
+              </div>
+              <div>
+                <p className="font-semibold">Material:</p>
+                <p>{product.material}</p>
+              </div>
+              <div>
+                <p className="font-semibold">Brand:</p>
+                <p>{product.brand}</p>
+              </div>
+              <div className=" mt-4">
+              <p className="font-semibold">Brand:</p>
+                <div className="flex mt-[2px] space-x-2">
+                  {Array.isArray(product?.color) ? (
+                    product?.color.map((color, index) => (
+                      <div
+                        key={index}
+                        onClick={() => handleColorSelect(color)}
+                        style={{ backgroundColor: color }}
+                        className={`w-4 h-4 rounded-full cursor-pointer ${
+                          selectedColor === color
+                            ? "ring-1 ring-offset-1 ring-blue-500"
+                            : ""
+                        }`}
+                      />
+                    ))
+                  ) : (
                     <div
-                      key={index}
-                      onClick={() => handleColorSelect(color)}
-                      style={{ backgroundColor: color }}
-                      className={`w-4 h-4 rounded-full cursor-pointer ${
-                        selectedColor === color
-                          ? "ring-1 ring-offset-1 ring-blue-500"
-                          : ""
-                      }`}
+                      onClick={() => handleColorSelect(product?.color)}
+                      style={{ backgroundColor: product?.color }}
+                      className="w-4 h-4 rounded-full cursor-pointer ring-1 ring-offset-1 ring-blue-500"
                     />
-                  ))
-                ) : (
-                  <div
-                    onClick={() => handleColorSelect(product?.color)}
-                    style={{ backgroundColor: product?.color }}
-                    className="w-4 h-4 rounded-full cursor-pointer ring-1 ring-offset-1 ring-blue-500"
-                  />
-                )}
+                  )}
+                </div>
+              </div>
+
+              <div>
+                <p className="font-semibold">Warranty:</p>
+                <p>{product.warranty} years</p>
+              </div>
+              <div>
+                <p className="font-semibold">Sold By:</p>
+                <p>{product.sold_by}</p>
+              </div>
+              <div>
+                <p className="font-semibold">Features:</p>
+                <p>{product.features}</p>
+              </div>
+              <div>
+                <p className="font-semibold">Origin:</p>
+                <p>{product.country_of_origin}</p>
               </div>
             </div>
             <div
-              rel="noopener noreferrer"
               onClick={handleBuyNowClick}
-              className="mt-8 w-[180px] text-sm flex justify-center font-medium items-center gap-2 cursor-pointer sm:text-base sm:w-[200px] bg-[#0E6B66] text-white px-4 py-[10px] rounded "
+              className="mt-8 w-[180px] mx-auto md:mx-0 text-sm flex justify-center font-medium items-center gap-2 cursor-pointer sm:text-base sm:w-[200px] bg-[#0E6B66] text-white px-4 py-[10px] rounded"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

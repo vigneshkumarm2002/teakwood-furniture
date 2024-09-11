@@ -1,124 +1,149 @@
 import React, { useEffect, useState } from "react";
-import ProductCard from "./card";
-import ProductDetails from "./productDetails";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import axios from "axios";
-import RangeSlider from "./priceSlider";
+import ProductCard from "./card";
 
 const ProductPage = () => {
-  const [clickedData, setClickedData] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [productData, setProductData] = useState([]);
   const [categoryData, setCategoryData] = useState(null);
   const [subcategoryData, setSubcategoryData] = useState([]);
   const [selectedSubcategories, setSelectedSubcategories] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [priceRange, setPriceRange] = useState([0, 10000]);
 
   const { id } = useParams();
 
-  const fetchProducts = async () => {
-    const dataToSend = {
-    category : selectedSubcategories.length > 0 ? null : [id],
-      sub_category: selectedSubcategories.length > 0 ? selectedSubcategories : null,
-    };
+  const fetchData = async () => {
     setLoading(true);
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_API_PORT}/api/products/category/`,
-        dataToSend
-      );
+      const baseUrl = process.env.REACT_APP_API_PORT;
 
-      console.log(response?.data);
-      setProductData(response?.data?.product);
+      // API calls for products, category, and subcategories
+      const [productsRes, categoryRes, subcategoriesRes] = await Promise.all([
+        axios.post(`${baseUrl}/api/products/category/`, {
+          category: selectedSubcategories.length > 0 ? null : [id], // Use the main category if no subcategories selected
+          sub_category:
+            selectedSubcategories.length > 0 ? selectedSubcategories : null, // Use subcategories if selected
+          min_price: priceRange[0],
+          max_price: priceRange[1],
+        }),
+        axios.get(`${baseUrl}/api/category/${id}/`), // Fetch category details
+        axios.get(`${baseUrl}/api/sub-category/category/${id}/`), // Fetch subcategories for the category
+      ]);
+
+      // Set the state with the response data
+      setProductData(productsRes.data.product || []);
+      setCategoryData(categoryRes.data.category || null);
+      setSubcategoryData(subcategoriesRes.data.sub_category || []);
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching data:", error.response || error.message);
     } finally {
       setLoading(false);
     }
   };
 
-  const fetchCategory = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_PORT}/api/category/${id}/`
-      );
-      setCategoryData(response?.data?.category);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const fetchSubCategoryList = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_PORT}/api/sub-category/category/${id}/`
-      );
-      setSubcategoryData(response?.data?.sub_category);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+  // Fetch data when the component mounts and when dependencies change
   useEffect(() => {
-    fetchCategory();
-    fetchSubCategoryList();
-    window.scrollTo(0, 0);
-  }, []);
+    fetchData();
+  }, [id, selectedSubcategories, priceRange]);
 
-  useEffect(() => {
-    fetchProducts();
-  }, [selectedSubcategories]);
-
+  // Handle selection of subcategories
   const handleSubcategorySelect = (subcategoryId) => {
-    const updatedSelection = selectedSubcategories.includes(subcategoryId)
-      ? selectedSubcategories.filter((id) => id !== subcategoryId)
-      : [...selectedSubcategories, subcategoryId];
-    setSelectedSubcategories(updatedSelection);
+    setSelectedSubcategories((prev) =>
+      prev.includes(subcategoryId)
+        ? prev.filter((id) => id !== subcategoryId) // Remove if already selected
+        : [...prev, subcategoryId] // Add if not selected
+    );
   };
-
-  const [minPrice, setMinPrice] = useState(1000);
-  const [maxPrice, setMaxPrice] = useState(7000);
-
-  const min = 100;
-  const max = 10000;
 
   return (
-    <div className="bg-white">
-      <div className="mx-auto max-w-7xl pb-20 pt-28 lg:px-8 px-6 ">
-        <h1 className="font-semibold text-[24px] pb-8 capitalize">
-          {categoryData?.name}
+    <div className="min-h-screen">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 py-12">
+        <h1 className="text-2xl font-bold mb-2 text-gray-800 capitalize">
+          {categoryData?.name || "Category"}
         </h1>
-        <div className="mb-6">
-          <p className="font-medium  text-lg pb-3">Filter by</p>
-          <div className="flex gap-4 items-center">
-            <p className="">Sub category : </p>
-            {subcategoryData?.map((subcategory) => (
-              <div
-                key={subcategory.uuid}
-                className={`inline-block px-2 py-[2px] text-sm border cursor-pointer ${
-                  selectedSubcategories.includes(subcategory.uuid)
-                    ? "border-[#0E6B66] bg-[#0E6B66]/10"
-                    : "border-gray-300"
-                } rounded`}
-                onClick={() => handleSubcategorySelect(subcategory.uuid)}
-              >
-                {subcategory.name}
-              </div>
-            ))}
-          </div>
-          {/* <RangeSlider
-            minPrice={minPrice}
-            maxPrice={maxPrice}
-            min={min}
-            max={max}
-            onMinPriceChange={setMinPrice}
-            onMaxPriceChange={setMaxPrice}
-          /> */}
-        </div>
+        <p className="text-gray-600 mb-8">{categoryData?.description}</p>
 
-        <div className="w-full grid grid-cols-1 min-[650px]:grid-cols-2 min-[900px]:grid-cols-3 xl:grid-cols-4 gap-4">
-          {productData?.map((item, index) => (
-            <ProductCard key={index} data={item} />
-          ))}
+        <div className="flex flex-col md:flex-row gap-8">
+          {/* Filter Section */}
+          <div className="w-full md:w-1/4">
+            <div className="bg-gray-200 rounded-lg shadow-sm p-6 sticky top-20">
+              <h2 className="text-xl font-semibold mb-6 text-gray-800">
+                Filters
+              </h2>
+
+              {/* Subcategories */}
+              <div className="mb-6">
+                <h3 className="font-medium text-gray-700 mb-3">
+                  Subcategories
+                </h3>
+                <div className="space-y-2">
+                  {subcategoryData.map((subcategory) => (
+                    <label key={subcategory.uuid} className="flex items-center">
+                      <input
+                        type="checkbox"
+                        checked={selectedSubcategories.includes(
+                          subcategory.uuid
+                        )}
+                        onChange={() =>
+                          handleSubcategorySelect(subcategory.uuid)
+                        }
+                        className="form-checkbox h-5 w-5 text-blue-600"
+                      />
+                      <span className="ml-2 text-gray-700">
+                        {subcategory.name}
+                      </span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              {/* Price Range */}
+              <div>
+                <h3 className="font-medium text-gray-700 mb-3">Price Range</h3>
+                <div className="flex items-center space-x-4">
+                  <input
+                    type="number"
+                    value={priceRange[0]}
+                    onChange={(e) =>
+                      setPriceRange([parseInt(e.target.value), priceRange[1]])
+                    }
+                    className="w-full px-2 py-1 border rounded"
+                    placeholder="Min"
+                  />
+                  <span>-</span>
+                  <input
+                    type="number"
+                    value={priceRange[1]}
+                    onChange={(e) =>
+                      setPriceRange([priceRange[0], parseInt(e.target.value)])
+                    }
+                    className="w-full px-2 py-1 border rounded"
+                    placeholder="Max"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Product Grid */}
+          <div className="w-full md:w-3/4">
+            {loading ? (
+              <div className="flex justify-center items-center h-64">
+                <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-600"></div>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {productData.length > 0 ? (
+                  productData.map((item) => (
+                    <ProductCard key={item.id} data={item} />
+                  ))
+                ) : (
+                  <p>No products found for the selected filters.</p>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
