@@ -24,20 +24,19 @@ const handleBuyNowClick = () => {
 };
 
   return (
-    <Link to={`/product/${data?.uuid}`} className="w-full h-full rounded-lg shadow-sm border flex flex-col ">
+    <Link to={`/product/${data?.uuid}`} className="w-full h-full  rounded-lg shadow-sm border flex flex-col ">
       <img
-  
-        className="w-full h-[220px] object-cover rounded-t cursor-pointer"
+        className="w-full h-[220px] object-contain bg-gray-200 rounded-t cursor-pointer"
         src={process.env.REACT_APP_API_PORT + data?.image_one}
       />
-      <div className=" w-full p-4  flex flex-col justify-between gap-6 ">
+      <div className=" w-full p-4 h-full  flex flex-col justify-between gap-6 ">
         <h1
-          className="text-base font-medium cursor-pointer  capitalize"
+          className="text-sm sm:text-base font-medium cursor-pointer  capitalize"
         >
           {data?.name}
         </h1>
         <div className="flex justify-between items-center  ">
-          <p className="text-lg font-medium flex items-center"> <img src={RupeeSign} className="h-5 w-auto"/>{data?.price}</p>
+          {/* <p className="text-lg font-medium flex items-center"> <img src={RupeeSign} className="h-5 w-auto"/>{data?.price}</p> */}
           <div className=" flex items-center gap-x-6 w-[fit-content] ">
             <button
               onClick={handleBuyNowClick}

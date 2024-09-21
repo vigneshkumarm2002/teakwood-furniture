@@ -142,8 +142,8 @@ const Footer = () => {
                       className="h-6 w-6 flex-shrink-0 text-gray-900"
                       aria-hidden="true"
                     />
-                    <a href="tel:+918046052474" className="ml-3">
-                      +91 8046052474
+                    <a href="tel:+918904088131" className="ml-3">
+                    +91 89040 88131
                     </a>
                   </dd>
                   <dt>
@@ -155,8 +155,8 @@ const Footer = () => {
                       aria-hidden="true"
                     />
                     <span className="ml-3 font-">
-                      <a href="mailto:support@teakwood.com">
-                        support@teakwood.com
+                      <a href="mailto:teakwoodfactoryblr@gmail.com">
+                      teakwoodfactoryblr@gmail.com
                       </a>
                     </span>
                   </dd>

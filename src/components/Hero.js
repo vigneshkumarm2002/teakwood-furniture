@@ -21,7 +21,7 @@ export default function Hero() {
             </p>
             <div className="mt-10 flex items-center gap-x-6 w-[fit-content] ">
               <a
-                href="tel:09876543210"
+                href="tel:+918904088131"
                 target="blank"
                 className="min-w-[150px] text-center rounded-md gradient px-3.5 py-3 text-lg font-medium text-white shadow-sm hover:bg-[#A91CDB] "
               >

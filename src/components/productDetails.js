@@ -97,10 +97,10 @@ const ProductDetail = () => {
             <p className="text-gray-600 text-sm sm:text-base mb-4">
               {product.description}
             </p>
-            <p className="text-lg font-semibold flex items-center mb-4">
+            {/* <p className="text-lg font-semibold flex items-center mb-4">
               <img src={RupeeSign} alt="Rupee" className="h-5 w-auto mr-1" />
               {product.price}
-            </p>
+            </p> */}
             <div className="grid grid-cols-2 gap-4 mb-4">
               <div>
                 <p className="font-semibold">Category:</p>
