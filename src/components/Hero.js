@@ -4,7 +4,7 @@ import Banner1 from "./../assets/pngwing3.png";
 export default function Hero() {
   return (
     <main className="bg-[#0E6B66] ">
-      <div className="mx-auto   max-w-7xl pb-14  px-6 sm:px-8  sm:pb-32 pt-[140px]  lg:pt-[170px]">
+      <div className="mx-auto   max-w-7xl pb-14  px-6 sm:px-8  sm:pb-32 pt-[180px]  lg:pt-[170px]">
         <div className="mx-auto relative gap-8 lg:gap-12 flex-col lg:flex-row lg:mx-0 flex lg:max-w-none lg:items-center ">
           <div className="  w-full mx-auto max-w-2xl  lg:shrink-0 lg:max-w-[50%] text-center lg:text-left flex flex-col items-center  lg:items-start">
             <h1

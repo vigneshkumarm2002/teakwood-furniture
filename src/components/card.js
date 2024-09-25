@@ -6,22 +6,23 @@ import { Link } from "react-router-dom";
 const ProductCard = ({ data }) => {
  
 
-const handleBuyNowClick = () => {
-  // Construct the message with the product details
-  const message = `I'm interested in purchasing the following product:\n\nProduct Name: ${data?.name}\nPrice: ${data?.price}`;
-
-  // Encode the message for use in a URL
-  const encodedMessage = encodeURIComponent(message);
-
-  // Specify the phone number with the country code
-  const phoneNumber = "918904088131";
-
-  // Create the WhatsApp URL with the phone number and encoded message
-  const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
-
-  // Open the WhatsApp URL in a new tab
-  window.open(whatsappUrl, "_blank");
-};
+  const handleBuyNowClick = () => {
+    // Construct the message with the product details, including the link as plain text (WhatsApp auto-converts it to a clickable link)
+    const message = `I'm interested in purchasing the following product:\n\nProduct Name: ${data?.name}\nLink: ${window.location.href}`;
+  
+    // Encode the message for use in a URL
+    const encodedMessage = encodeURIComponent(message);
+  
+    // Specify the phone number with the country code
+    const phoneNumber = "918904088131";
+  
+    // Create the WhatsApp URL with the phone number and encoded message
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
+  
+    // Open the WhatsApp URL in a new tab
+    window.open(whatsappUrl, "_blank");
+  };
+  
 
   return (
     <Link to={`/product/${data?.uuid}`} className="w-full h-full  rounded-lg shadow-sm border flex flex-col ">

@@ -1,146 +1,189 @@
-import { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Dialog, Disclosure, Popover, Transition } from "@headlessui/react";
-import ChairIllus from "./../assets/images/chairillus.jpg"
 import {
-  ArrowPathIcon,
   Bars3Icon,
-  ChartPieIcon,
-  CursorArrowRaysIcon,
-  FingerPrintIcon,
-  SquaresPlusIcon,
   XMarkIcon,
+  MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
-import {
-  ChevronDownIcon,
-  PhoneIcon,
-  PlayCircleIcon,
-} from "@heroicons/react/20/solid";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import Logo from "./../assets/png.png";
 import axios from "axios";
-
+import { useNavigate, useLocation } from "react-router-dom";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const [categoryData, setCategoryData] = useState(null);
-
-useEffect(() => {
- 
-  axios
-    .get(`${process.env.REACT_APP_API_PORT}/api/category/`)
-    .then((res) => {
-      console.log("res", res.data);
-      setCategoryData(res?.data?.category);
-    })
-    .catch((error) => {
-      console.log(error);
-    })
-   
-}, []);
-
-useEffect(()=>{
-  console.log("process.env.REACT_APP_API_PORT", process.env.REACT_APP_API_PORT)
-},[process.env.REACT_APP_API_PORT])
+const SearchBar = React.memo(({ searchQuery, onSearchChange, onSubmit, mobile = false }) => {
+  const inputRef = useCallback(node => {
+    if (node !== null) {
+      node.focus();
+    }
+  }, []);
 
   return (
-    <header className="inset-x-0 top-0 z-50 w-full fixed   bg-[#0E6B66]">
-      <nav
-        className="mx-auto flex max-w-7xl items-center justify-between px-6 h-[60px] sm:h-[68px] lg:px-8"
-        aria-label="Global"
-      >
-        <div className="flex lg:flex-1">
-          <a
-            href="#"
-            className="-m-1.5 p-1.5 text-[white] text-lg font-semibold"
-          >
+    <form onSubmit={onSubmit} className={`flex items-center ${mobile ? "w-full" : "w-full"} gap-2`}>
+      <div className="w-full relative h-10">
+        <input
+          ref={inputRef}
+          type="text"
+          value={searchQuery}
+          onChange={onSearchChange}
+          placeholder="Search products..."
+          className="w-full h-full px-2 py-2 text-sm text-gray-900 bg-white rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0E6B66]"
+        />
+        <button
+          type="submit"
+          className="absolute h-8 w-8 right-1 top-1/2 -translate-y-1/2 p-[6px] bg-[#0E6B66] text-white rounded-md hover:bg-[#0A5A56] focus:outline-none focus:ring-2 focus:ring-[#0E6B66]"
+        >
+          <MagnifyingGlassIcon className="w-full h-full" />
+        </button>
+      </div>
+    </form>
+  );
+});
+
+export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [categoryData, setCategoryData] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [showSearch, setShowSearch] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_PORT}/api/category/`)
+      .then((res) => {
+        setCategoryData(res.data.category || []);
+      })
+      .catch((error) => {
+        console.error("Error fetching categories:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const searchParam = params.get('search');
+    if (searchParam) {
+      setSearchQuery(searchParam);
+      setShowSearch(true);
+    }
+  }, [location]);
+
+  const handleSearch = useCallback((e) => {
+    e.preventDefault();
+    navigate(`/products?search=${searchQuery}`);
+  }, [navigate, searchQuery]);
+
+  const handleSearchChange = useCallback((e) => {
+    setSearchQuery(e.target.value);
+  }, []);
+
+  return (
+    <header className="inset-x-0 top-0 z-50 w-full fixed bg-[#0E6B66]">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 h-[60px] sm:h-[68px] lg:px-8" aria-label="Global">
+        <div className="flex lg:flex-1 gap-8 items-center justify-between w-full">
+          <a href="/" className="flex-shrink-0 text-[white] text-lg font-semibold">
             <span className="sr-only">Teakwood Factory</span>
             <img className="h-5 sm:h-8 w-auto" src={Logo} alt="Logo" />
-            {/* Teak Wood Factory */}
           </a>
+          <div className="hidden lg:flex max-w-md flex-grow">
+            <SearchBar
+              searchQuery={searchQuery}
+              onSearchChange={handleSearchChange}
+              onSubmit={handleSearch}
+            />
+          </div>
+          <Popover.Group className="hidden lg:flex lg:gap-x-12 flex-shrink-0">
+            <a href="/" className="text-sm font-medium leading-6 text-white">
+              Home
+            </a>
+            <Popover className="relative">
+              <Popover.Button className="flex items-center gap-x-1 text-sm font-medium leading-6 text-white outline-none">
+                Products
+                <ChevronDownIcon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
+              </Popover.Button>
+
+              <Transition
+                as={React.Fragment}
+                enter="transition ease-out duration-200"
+                enterFrom="opacity-0 translate-y-1"
+                enterTo="opacity-100 translate-y-0"
+                leave="transition ease-in duration-150"
+                leaveFrom="opacity-100 translate-y-0"
+                leaveTo="opacity-0 translate-y-1"
+              >
+                <Popover.Panel className="absolute right-0 top-full mt-3 max-w-[400px] min-w-[150px] overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5">
+                  <div className="p-4">
+                    {categoryData.map((item) => (
+                      <div key={item.name} className="group relative whitespace-nowrap flex items-center gap-x-6 rounded-lg px-2 py-2 text-sm leading-6 hover:bg-gray-100">
+                        <div className="flex-auto">
+                          <a href={`/categories/${item?.uuid}`} className="block font-medium text-gray-900">
+                            {item.name}
+                            <span className="absolute inset-0" />
+                          </a>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </Popover.Panel>
+              </Transition>
+            </Popover>
+
+            <a href="/about" className="text-sm font-medium leading-6 text-white">
+              About
+            </a>
+          </Popover.Group>
         </div>
         <div className="flex lg:hidden">
+          {!showSearch && (
+            <button
+              type="button"
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white"
+              onClick={() => setShowSearch(true)}
+            >
+              <MagnifyingGlassIcon className="h-6 w-6" aria-hidden="true" />
+            </button>
+          )}
           <button
             type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white"
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white ml-2"
             onClick={() => setMobileMenuOpen(true)}
           >
             <span className="sr-only">Open main menu</span>
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
-        <Popover.Group className="hidden lg:flex lg:gap-x-12">
-          <a href="/" className="text-sm font-medium leading-6 text-white">
-            Home
-          </a>
-          <Popover className="relative">
-            <Popover.Button className="flex items-center gap-x-1 text-sm font-medium leading-6 text-white   outline-none">
-              Products
-              <ChevronDownIcon
-                className="h-5 w-5 flex-none text-gray-400"
-                aria-hidden="true"
-              />
-            </Popover.Button>
-
-            <Transition
-              as={Fragment}
-              enter="transition ease-out duration-200"
-              enterFrom="opacity-0 translate-y-1"
-              enterTo="opacity-100 translate-y-0"
-              leave="transition ease-in duration-150"
-              leaveFrom="opacity-100 translate-y-0"
-              leaveTo="opacity-0 translate-y-1"
-            >
-              <Popover.Panel className="absolute left-1/2 -translate-x-1/2 top-full  mt-3  max-w-[400px] min-w-[150px]  overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5">
-                <div className="p-4">
-                  {categoryData?.map((item) => (
-                    <div
-                      key={item.name}
-                      className="group relative  whitespace-nowrap flex items-center gap-x-6 rounded-lg px-2 py-2 text-sm leading-6 hover:bg-gray-100"
-                    >
-                      <div className="flex-auto">
-                        <a
-                           href={`/categories/${item?.uuid}`}
-                          className="block font-medium text-gray-900"
-                        >
-                          {item.name}
-                          <span className="absolute inset-0" />
-                        </a>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </Popover.Panel>
-            </Transition>
-          </Popover>
-
-          <a href="/about" className="text-sm font-medium leading-6 text-white">
-            About
-          </a>
-          {/* <a
-            href="/contact"
-            className="text-sm font-medium leading-6 text-white"
-          >
-            Contact
-          </a> */}
-        </Popover.Group>
       </nav>
-      <Dialog
-        as="div"
-        className="lg:hidden"
-        open={mobileMenuOpen}
-        onClose={setMobileMenuOpen}
-      >
+      {showSearch && (
+        <div className="px-6 py-2  -mt-2 mb-2 max-w-lg mx-auto w-full flex gap-2 lg:hidden">
+          <SearchBar
+            searchQuery={searchQuery}
+            onSearchChange={handleSearchChange}
+            onSubmit={handleSearch}
+            mobile
+          />
+          <button
+            type="button"
+            onClick={() => {setShowSearch(false)
+              navigate("/")
+              setSearchQuery("");
+            }}
+            className=" w-10 h-10 border border-gray-600 bg-gray-200 flex cursor-pointer justify-center p-1 items-center rounded-md  text-gray-900 focus:outline-none"
+          >
+            <XMarkIcon className="h-6 w-6 stroke-gray-900" />
+         
+          </button>
+        </div>
+      )}
+      <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-50" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full  bg-white px-6 py-5 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full bg-white px-6 py-5 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5 text-gray-900">
-              <span className="sr-only"> TeakWood Factory</span>
+            <a href="/" className="-m-1.5 p-1.5 text-gray-900">
+              <span className="sr-only">TeakWood Factory</span>
               <img className="h-5 w-auto" src={Logo} alt="" />
-              {/* TeakWood Factory */}
             </a>
             <button
               type="button"
@@ -151,13 +194,18 @@ useEffect(()=>{
               <XMarkIcon className="h-6 w-6" aria-hidden="true" />
             </button>
           </div>
-          <div className="mt-6 relative flow-root h-full overflow-y-auto">
-            <img src={ChairIllus} alt="Illus"  className="absolute  h-[300px] bottom-0 right-0"/>
+          <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
+                <SearchBar
+                  searchQuery={searchQuery}
+                  onSearchChange={handleSearchChange}
+                  onSubmit={handleSearch}
+                  mobile
+                />
                 <a
                   href="/"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 "
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Home
                 </a>
@@ -167,15 +215,12 @@ useEffect(()=>{
                       <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50">
                         Products
                         <ChevronDownIcon
-                          className={classNames(
-                            open ? "rotate-180" : "",
-                            "h-5 w-5 flex-none"
-                          )}
+                          className={classNames(open ? "rotate-180" : "", "h-5 w-5 flex-none")}
                           aria-hidden="true"
                         />
                       </Disclosure.Button>
                       <Disclosure.Panel className="mt-2 space-y-2">
-                        {categoryData?.map((item) => (
+                        {categoryData.map((item) => (
                           <Disclosure.Button
                             key={item.name}
                             as="a"
@@ -191,16 +236,10 @@ useEffect(()=>{
                 </Disclosure>
                 <a
                   href="/about"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 "
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   About
                 </a>
-                {/* <a
-                  href="/contact"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 "
-                >
-                  Contact
-                </a> */}
               </div>
             </div>
           </div>
@@ -208,11 +247,11 @@ useEffect(()=>{
       </Dialog>
 
       <a
-        className="text-white bg-[#24CC63]  p-2 rounded-full w-max fixed z-50 bottom-6 right-6 "
+        className="text-white bg-[#24CC63] p-2 rounded-full w-max fixed z-50 bottom-6 right-6"
         href="https://wa.me/918904088131"
         target="_blank"
+        rel="noopener noreferrer"
       >
-        {" "}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
