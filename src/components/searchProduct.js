@@ -37,7 +37,9 @@ const SearchProduct = () => {
 
   // Fetch data when the component mounts and when dependencies change
   useEffect(() => {
+    if(searchQuery){
     fetchData();
+    }
   }, [searchQuery]);
 
 
