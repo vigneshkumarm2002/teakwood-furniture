@@ -8,14 +8,20 @@ const Footer = () => {
   return (
     <div className="bg-white">
       <div className="mx-auto   max-w-7xl pt-32 lg:px-8 px-6 ">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.037768050279!2d77.57062277481872!3d12.905293016329095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15b03ec4509f%3A0x54d1312d9f5e79bc!2sTeak%20Wood%20Factory!5e0!3m2!1sen!2sin!4v1716786846912!5m2!1sen!2sin"
-          className="w-full h-[400px]"
-          style={{ border: 0 }}
-        allowFullScreen
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        ></iframe>
+        <div>
+          <h1 className=" text-xl block text-[#0E6B66] font-semibold mb-4">
+            Our Store Location
+          </h1>
+
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.037768050279!2d77.57062277481872!3d12.905293016329095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15b03ec4509f%3A0x54d1312d9f5e79bc!2sTeak%20Wood%20Factory!5e0!3m2!1sen!2sin!4v1716786846912!5m2!1sen!2sin"
+            className="w-full h-[400px]"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
         <div className="flex flex-col gap-8 divide-y divide-gray-900/10 pt-24">
           <div className="grid grid-cols-1 sm:grid-cols-2 min-[900px]:grid-cols-3 gap-12 sm:gap-8">
             <div className="flex justify-center sm:justify-normal sm:items-start ">
@@ -130,7 +136,7 @@ const Footer = () => {
                       <br />
                       Akshya Complex, Metro Station, 2,
                       <br /> Kanakapura Rd, near Metro Pillar no 69,
-                      <br /> Ilyas Nagar, J P Nagar 2nd Stage,
+                      <br /> J P Nagar 2nd Stage,
                       <br /> Bengaluru, Karnataka 560078, India
                     </p>
                   </dd>
@@ -143,7 +149,7 @@ const Footer = () => {
                       aria-hidden="true"
                     />
                     <a href="tel:+918904088131" className="ml-3">
-                    +91 89040 88131
+                      +91 89040 88131
                     </a>
                   </dd>
                   <dt>
@@ -156,7 +162,7 @@ const Footer = () => {
                     />
                     <span className="ml-3 font-">
                       <a href="mailto:teakwoodfactoryblr@gmail.com">
-                      teakwoodfactoryblr@gmail.com
+                        teakwoodfactoryblr@gmail.com
                       </a>
                     </span>
                   </dd>

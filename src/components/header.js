@@ -34,7 +34,7 @@ const SearchBar = React.memo(({ searchQuery, onSearchChange, onSubmit, mobile = 
         />
         <button
           type="submit"
-          className="absolute h-8 w-8 right-1 top-1/2 -translate-y-1/2 p-[6px] bg-[#0E6B66] text-white rounded-md hover:bg-[#0A5A56] focus:outline-none focus:ring-2 focus:ring-[#0E6B66]"
+          className="absolute h-8 w-8 right-1 top-1/2 cursor-pointer -translate-y-1/2 p-[6px] bg-[#0E6B66] text-white rounded-[4px] hover:bg-[#0A5A56] focus:outline-none"
         >
           <MagnifyingGlassIcon className="w-full h-full" />
         </button>
@@ -88,7 +88,7 @@ export default function Header() {
             <span className="sr-only">Teakwood Factory</span>
             <img className="h-5 sm:h-8 w-auto" src={Logo} alt="Logo" />
           </a>
-          <div className="hidden lg:flex max-w-md flex-grow">
+          <div className="hidden lg:flex max-w-[300px] flex-grow">
             <SearchBar
               searchQuery={searchQuery}
               onSearchChange={handleSearchChange}
@@ -157,7 +157,7 @@ export default function Header() {
         </div>
       </nav>
       {showSearch && (
-        <div className="px-6 py-2  -mt-2 mb-2 max-w-lg mx-auto w-full flex gap-2 lg:hidden">
+        <div className="px-6 py-2  -mt-2 mb-2 max-w-md mx-auto w-full flex gap-2 lg:hidden">
           <SearchBar
             searchQuery={searchQuery}
             onSearchChange={handleSearchChange}
