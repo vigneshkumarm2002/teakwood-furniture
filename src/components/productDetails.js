@@ -31,7 +31,7 @@ const ProductDetail = () => {
 
   // Handle buy now click and include the selected color
   const handleBuyNowClick = () => {
-    const message = `I'm interested in purchasing the following product:\n\nProduct Name: ${product?.name}\nSelected Color: ${selectedColor || 'No color selected'}\nLink:${window.location.href}`;
+    const message = `I'm interested in purchasing the following product:\n\nProduct Name: ${product?.name}\nLink:https://www.teakwoodfactory.com/product/${product?.uuid}`;
     const encodedMessage = encodeURIComponent(message);
     const phoneNumber = "918904088131";
     const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;

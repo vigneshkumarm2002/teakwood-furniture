@@ -1,39 +1,36 @@
-
 import React from "react";
-import RupeeSign from "./../assets/icons/rupee.png"
+import RupeeSign from "./../assets/icons/rupee.png";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({ data }) => {
- 
-
   const handleBuyNowClick = () => {
     // Construct the message with the product details, including the link as plain text (WhatsApp auto-converts it to a clickable link)
-    const message = `I'm interested in purchasing the following product:\n\nProduct Name: ${data?.name}\nLink: ${window.location.href}`;
-  
+    const message = `I'm interested in purchasing the following product:\n\nProduct Name: ${data?.name}\nLink:https://www.teakwoodfactory.com/product/${data?.uuid}`;
+
     // Encode the message for use in a URL
     const encodedMessage = encodeURIComponent(message);
-  
+
     // Specify the phone number with the country code
     const phoneNumber = "918904088131";
-  
+
     // Create the WhatsApp URL with the phone number and encoded message
     const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
-  
+
     // Open the WhatsApp URL in a new tab
     window.open(whatsappUrl, "_blank");
   };
-  
 
   return (
-    <Link to={`/product/${data?.uuid}`} className="w-full h-full  rounded-lg shadow-sm border flex flex-col ">
+    <Link
+      to={`/product/${data?.uuid}`}
+      className="w-full h-full  rounded-lg shadow-sm border flex flex-col "
+    >
       <img
         className="w-full h-[220px] object-contain bg-gray-200 rounded-t cursor-pointer"
         src={process.env.REACT_APP_API_PORT + data?.image_one}
       />
       <div className=" w-full p-4 h-full  flex flex-col justify-between gap-6 ">
-        <h1
-          className="text-sm sm:text-base font-medium cursor-pointer  capitalize"
-        >
+        <h1 className="text-sm sm:text-base font-medium cursor-pointer  capitalize">
           {data?.name}
         </h1>
         <div className="flex justify-between items-center  ">
