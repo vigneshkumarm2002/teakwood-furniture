@@ -5,6 +5,7 @@ import Duroflex from "./../assets/images/brands/duroflex.jpg";
 import Zen from "./../assets/images/brands/zen.jpeg";
 import Benefits from "./benefits";
 import FAQ from "./faq";
+import CTA from "./CTA";
 const About = () => {
   const brands = [Centuary, Duroflex, Zen];
   return (
@@ -76,7 +77,9 @@ const About = () => {
         </div>
       </div>
       <Benefits />
+      <CTA/>
       <FAQ paddingTop />
+    
     </>
   );
 };

@@ -56,7 +56,7 @@ const Testimonials = () => {
 
   return (
     <div className="bg-white">
-      <div className="mx-auto max-w-7xl sm:pb-32 pb-24 pt-12 sm:pt-24 lg:px-8 px-6">
+      <div className="mx-auto max-w-7xl  py-12 sm:py-24 lg:px-8 px-6">
  
         <div className="relative ">
         <h2 className=" w-full  md:max-w-2xl mx-auto text-2xl text-[#0E6B66] font-semibold text-center pb-12 ">

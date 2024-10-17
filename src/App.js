@@ -22,6 +22,7 @@ import ProductPage from "./components/productPage";
 import Testimonial from "./components/testimonial";
 import ProductDetails from "./components/productDetails";
 import SearchProduct from "./components/searchProduct";
+import CTA from "./components/CTA";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
                 <Categories />
                 <Featured />
                 <Testimonial />
+                <CTA/>
                 <Faq />
                 {/* 
                 <YT /> */}
