@@ -115,7 +115,7 @@ const ProductDetail = () => {
                 <p>{product.brand}</p>
               </div>
               <div className=" mt-4">
-              <p className="font-semibold">Brand:</p>
+              <p className="font-semibold">Color:</p>
                 <div className="flex mt-[2px] space-x-2">
                   {Array.isArray(product?.color) ? (
                     product?.color.map((color, index) => (
